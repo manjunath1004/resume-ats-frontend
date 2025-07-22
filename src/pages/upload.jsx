@@ -34,11 +34,12 @@ const Upload = () => {
     formData.append('file', file);
 
     try {
-      const res = await axios.post('http://localhost:8000/api/parse-resume', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
+              const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/parse-resume`, formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        });
+
 
       if (res.status === 200) {
         localStorage.setItem('ats-result', JSON.stringify(res.data));
